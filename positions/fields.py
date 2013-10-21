@@ -95,10 +95,10 @@ class PositionField(models.IntegerField):
 
         collection_count = self.get_collection(model_instance).count()
         if current is None:
-            max_position = collection_count
+            max_position = collection_count + 1
         else:
-            max_position = collection_count - 1
-        min_position = 0
+            max_position = collection_count
+        min_position = 1
 
         # new instance; appended; no cleanup required on post_save
         if add and (updated == -1 or updated >= max_position):

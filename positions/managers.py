@@ -18,7 +18,7 @@ class PositionQuerySet(QuerySet):
     def reposition(self, save=True):
         position_field = self.model._meta.get_field_by_name(self.position_field_name)[0]
         post_save.disconnect(position_field.update_on_save, sender=self.model)
-        position = 0
+        position = 1
         for obj in self.iterator():
             setattr(obj, self.position_field_name, position)
             if save:
